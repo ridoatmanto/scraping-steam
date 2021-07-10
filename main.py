@@ -6,4 +6,9 @@ headers = {
 }
 url = 'https://store.steampowered.com/'
 r = requests.get(url, headers=headers)
-print(r)
+# print(r)
+soup = BeautifulSoup(r.text, 'html.parser')
+steams = soup.findAll('div', attrs={'class':'carousel_items'})
+
+for steam in steams:
+    print(steam)
